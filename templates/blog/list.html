@@ -1,0 +1,63 @@
+{% extends "blog/home.html" %}
+ 
+{% block title %}
+lsit
+{% endblock title %}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid" style="background:#F4F4F4">
+      <div class="row">
+         
+            
+            <div class="col-md-12">
+             <style type="text/css">li{float:left;}</style> 
+              <ul type="none">
+
+              {% if objects.object_list %}
+                  {% for p in objects.object_list %}
+                  <li><h4><a href="{{BASE_DIR}}/blog/{{host_pro.user.id}}/detail/{{p.id}}">{{p.title}}</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{p.pub_date}}</h4></li> <br><br>
+                  {% endfor %}
+                {% else %}
+                
+                {% endif %}
+
+
+              </ul>
+                    
+              
+
+              <div class="pagination pagination-centered">
+                <ul type="none">
+                  {% if objects.has_previous %}
+                  <li><a href="?page={{ objects.previous_page_number }}">前一页</a></li>
+                  {% else %}
+                  <li class="active"><a>前一页</a></li>
+                  {% endif %}
+
+                  {% for p in page_range %}
+                    {% ifequal p objects.number %}
+                    <li class="active"><a>{{p}}</a></li>
+                    {% else %}
+                    <li><a href="?page={{p}}" title="第{{p}}页">{{p}}</a><li>
+                    {% endifequal %}
+                  {% endfor %}
+
+                  {% if objects.has_next %}
+                  <li><a href="?page={{ objects.next_page_number }}">后一页</a></li>
+                  {% else %}
+                  <li class="active"> <a>后一页</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+
+         	</div>
+      </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "blog/home.html" %}
+ 
+{% block title %}
+blog
+{% endblock title %}
+
+{% block content %}
+
+
+
+
+<!-- 正文开始 -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-9">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="text-center article-title" style="margin:20px 0px 20px">
+                            <span class="text-muted">
+                                <h1>{{blog.title}}</h1>
+                            </div>
+                            <div style="margin-bottom:50px;">
+</div>
+<style>
+
+/*div {width:500px; border:1px #000000 solid}*/
+h4 {style-type:none;width:100%;text-align:right;}
+li {display:inline;}
+</style>
+
+                    {% autoescape off %}
+                    {{blog.content}}
+                    {% endautoescape %}
+    
+
+        
+        
+        <ul>
+            {% for comment in comment_list %}
+                <li type="none">    
+
+                    <div>
+                      <img src="{{comment.author.photo.url}} " height="64" width="63" class="img-circle">
+                      <a href="{{BASE_DIR}}/blog/{{comment.author.user.id}}">{{comment.author}}</a> 
+                    </div>
+                                
+                     {% autoescape off %}
+                     {{comment.content}}
+                     {% endautoescape %}
+                     <h4>{{comment.pub_date}}</h4><br>
+                </li>
+            {% endfor %}
+        </ul>
+
+
+
+        <form method="post" action="./{{blog.id}}">
+                {% csrf_token %}
+                {{commentform.content}}
+                <input type="submit" value="评论" class="btn btn-default btn-lg btn-block" />
+                <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+        </form>
+
+{% endblock %}

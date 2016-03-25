@@ -1,0 +1,35 @@
+{% extends "blog/home.html" %}
+ 
+{% block title %}
+个人资料
+{% endblock title %}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid" style="background:#F4F4F4">
+      <div class="row">
+         
+            
+            <div class="col-md-12">
+             <ul >
+                <li type="none">账号:{{host_pro.user.id}}</li>
+                <li type="none" >    
+
+                    <div>用户名：{{host_pro.nickname}}</div>
+                </li>
+                <li type="none">出生日期：{{host_pro.birthday}}</li>
+                <li type="none">个人简介：{{host_pro.about}}</li>
+          
+        </ul>
+                    
+
+         	</div>
+      </div>
+</div>
+
+
+
+{% endblock %}

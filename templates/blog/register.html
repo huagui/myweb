@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+Register
+{% endblock title %}
+
+{% block body %}
+
+<!-- 登录 -->
+   <div class="container-fluid" style="background:#F4F4F4">
+      <div class="row">
+         <br/><br/>
+         <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12" style = "text-align:center;">
+               <h3 style = "color:rgb(255, 140, 60);font-weight:bold;font-family:黑体">会员注册</h3>
+               <!-- <img src="/iptest/Public/image/loginPic.png"> -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+               <form method="post"  enctype="multipart/form-data" action="/register">
+				{% csrf_token %}
+				<!-- <table>
+				<tr><td><label for="id_username">用户名：</label></td><td>{{ form.username }}</td></tr>
+				<tr><td><label for="id_password">密码：</label></td><td>{{ form.password }}</td></tr>
+				</table> -->
+
+				<table>
+
+				{{userform.as_p}}
+
+				<strong>昵称:</strong><input type="text" name="nickname"><br>
+				<strong>头像：</strong> {{proform.photo}}<td><tr>
+				<td> <strong>出生日期：</strong> 
+				<input id="meeting" type="date" name= "birthday" value="1991-01-01"/><br>
+				<strong>个人简介：</strong> {{proform.about}}
+				</table>
+
+				<!-- <table>
+				{{proform.as_p}}
+				</table>
+				 -->
+				<!-- <table>{{proform.as_p}}</table> -->
+
+
+
+				<input type="submit" value="注册" class="btn btn-default btn-lg btn-block" />
+				<!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+			   </form>
+               <br/><br/><br/><br/>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+{% endblock body %}

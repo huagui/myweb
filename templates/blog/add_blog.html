@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+Register
+{% endblock title %}
+
+{% block body %}
+
+<!-- 登录 -->
+   <div class="container-fluid" style="background:#F4F4F4">
+      <div class="row">
+         <br/><br/>
+         <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12" style = "text-align:center;">
+               <!-- <h3 style = "color:rgb(255, 140, 60);font-weight:bold;font-family:黑体">会员注册</h3> -->
+               <!-- <img src="/iptest/Public/image/loginPic.png"> -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+               <form method="post" action="{{BASE_DIR}}/blog/{{user.id}}/add">
+				{% csrf_token %}
+
+				{{blogform.as_p}}
+
+				<input type="submit" value="确定" class="btn btn-default btn-lg btn-block" />
+				<!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+			   </form>
+               <br/><br/><br/><br/>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+{% endblock body %}

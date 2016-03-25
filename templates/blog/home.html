@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+		    <a class="navbar-brand dropdown" href="{{BASE_DIR}}/blog/{{host_pro.user.id}}">{{host_pro.nickname}}的主页</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class=""><a href="{{BASE_DIR}}/blog/{{host_pro.user.id}}/list">日志</a></li>
+              <li><a href="{{BASE_DIR}}/blog/{{host_pro.user.id}}/photo">相册</a></li>
+              <li><a href="{{BASE_DIR}}/blog/{{host_pro.user.id}}/msg">留言板</a></li>
+              <li><a href="{{BASE_DIR}}/blog/{{host_pro.user.id}}/pro">个人资料</a></li>
+                {% if is_host %}
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user_pro.nickname}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{BASE_DIR}}/logout">注销</a></li>
+                      <li><a href="{{BASE_DIR}}/blog/{{user.id}}/upload_photo">上传相片</a></li>
+                      <li><a href="{{BASE_DIR}}/blog/{{user.id}}/add">写日志</a></li>
+                      <li><a href="{{BASE_DIR}}/blog/{{user.id}}/friend">我的圈子</a></li>
+                      <!-- <li><a href="{{BASE_DIR}}/blog/{{user.id}}/add">写日志</a></li> -->
+                      <!-- <li role="separator" class="divider"></li>
+                      <li class="dropdown-header">Nav header</li>
+                      <li><a href="#">Separated link</a></li>
+                      <li><a href="#">One more separated link</a></li> -->
+                    </ul>
+                  </li>
+
+                {% else %}
+                    <li class="dropdown">
+                    <a href="{{BASE_DIR}}/blog/{{user.id}}">回家</a>
+                {% endif %}
+            </ul>
+          <!--   <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+              <li><a href="../navbar-static-top/">Static top</a></li>
+              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+            </ul> -->
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+      <!-- Main component for a primary marketing message or call to action -->
+ <!--      <div class="jumbotron">
+        <h1>Navbar example</h1>
+        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div> -->
+
+{% block content %}
+    
+      <div class="carousel slide" id="carousel-956119">
+<ol class="carousel-indicators">
+  <li data-slide-to="0" data-target="#carousel-956119">&nbsp;</li>
+  <li class="active" data-slide-to="1" data-target="#carousel-956119">&nbsp;</li>
+  <li data-slide-to="2" data-target="#carousel-956119">&nbsp;</li>
+</ol>
+
+<div class="carousel-inner">
+<div class="item"><img alt="" src="{{BASE_DIR}}/media/img/1.jpg" />
+<div class="carousel-caption" contenteditable="true">
+<h4>棒球</h4>
+
+<p>棒球运动是一种以棒打球为主要特点，集体性、对抗性很强的球类运动项目，在美国、日本尤为盛行。</p>
+</div>
+</div>
+
+<div class="item active"><img alt="" src="{{BASE_DIR}}/media/img/2.jpg" />
+<div class="carousel-caption" contenteditable="true">
+<h4>冲浪</h4>
+
+<p>冲浪是以海浪为动力，利用自身的高超技巧和平衡能力，搏击海浪的一项运动。运动员站立在冲浪板上，或利用腹板、跪板、充气的橡皮垫、划艇、皮艇等驾驭海浪的一项水上运动。</p>
+</div>
+</div>
+
+<div class="item"><img alt="" src="{{BASE_DIR}}/media/img/3.jpg" />
+<div class="carousel-caption" contenteditable="true">
+<h4>自行车</h4>
+
+<p>以自行车为工具比赛骑行速度的体育运动。1896年第一届奥林匹克运动会上被列为正式比赛项目。环法赛为最著名的世界自行车锦标赛。</p>
+</div>
+</div>
+</div>
+<a class="left carousel-control" data-slide="prev" href="#carousel-956119">&lsaquo;</a> <a class="right carousel-control" data-slide="next" href="#carousel-956119">&rsaquo;</a></div>
+
+{% endblock content %}
+
+   
+
+{% block msg%}
+{% endblock %}
+ </div> <!-- /container -->
+
+{% endblock body %}

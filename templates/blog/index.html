@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}欢迎光临{% endblock title %}
+
+{% block body %}
+
+
+<!-- 登录 -->
+   <div class="container-fluid" style="background:#F4F4F4">
+      <div class="row">
+         <br/><br/>
+         <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12" style = "text-align:center;">
+               <!-- <img src="/iptest/Public/image/loginPic.png"> -->
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+               <div class="jumbotron masthead" style="background:#F4F4F4" >
+				      <div class="container">
+				        <h1>欢迎使用本博客</h1>
+				        <!-- <h2>简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</h2> -->
+				        
+				          <a class="btn btn-lg btn-primary btn-shadow" href="/login"  role="button" >登陆</a>
+				        
+				          
+				          <a class="btn btn-lg btn-primary btn-shadow" href="/register"  role="button" >注册</a>
+
+				          <a class="btn btn-lg btn-primary btn-shadow" href="/admin"  role="button" >后台</a>
+				        
+				      </div>
+				</div>
+               <br/><br/><br/><br/>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+
+
+
+
+<!-- old  -->
+<!-- <div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<h1 class="text-center text-info">
+				欢迎使用本博客
+			</h1> 
+			<a href="/login" class="button button-3d button-primary button-rounded ">登陆</a>
+			<a href="/register" class="button button-3d button-primary button-rounded "  style='margin:auto;'>注册</a> 
+		</div>
+	</div>
+</div> -->
+
+{% endblock %}
+
+
+
+<a href="http://www.bootcss.com/" class="button button-3d button-primary button-rounded">Check out the new site!</a>

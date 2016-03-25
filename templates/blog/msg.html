@@ -1,0 +1,55 @@
+{% extends "blog/home.html" %}
+ 
+{% block title %}
+lsit
+{% endblock title %}
+
+{% block msg %}
+
+
+
+
+<div class="container-fluid" style="background:#F4F4F4">
+      <div class="row">
+         
+            
+            <div class="col-md-12">
+        
+
+<style>
+
+/*div {width:500px; border:1px #000000 solid}*/
+h4 {style-type:none;width:100%;text-align:right;}
+li {display:inline;}
+</style>
+
+              <ul>
+            {% for msg in msg_list %}
+                <li type="none">    
+
+                    <div>
+                      <img src="{{msg.author.photo.url}} " height="64" width="63" class="img-circle">
+                      <a href="{{BASE_DIR}}/blog/{{msg.author.user.id}}">{{msg.author}}</a> 
+                    </div>
+                                
+                     {% autoescape off %}
+                     {{msg.content}}
+                     {% endautoescape %}
+                     <h4>{{msg.pub_date}}</h4><br>
+                </li>
+            {% endfor %}
+        </ul>
+                    
+
+         	</div>
+      </div>
+</div>
+
+       <form method="post" action="./msg">
+                {% csrf_token %}
+                {{msgform.content}}
+                <input type="submit" value="留言" class="btn btn-default btn-lg btn-block" />
+                <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+        </form>
+
+{% endblock %}

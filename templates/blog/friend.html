@@ -1,0 +1,36 @@
+{% extends "blog/home.html" %}
+ 
+{% block title %}
+lsit
+{% endblock title %}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid" style="background:#F4F4F4">
+      <div class="row">
+         
+            
+            <div class="col-md-12">
+             <ul >
+            {% for friend in friend_list %}
+                <li type="none" >    
+
+                    <div>
+                      <img src="{{friend.photo.url}} " height="64" width="63" class="img-circle">
+                      <a href="{{BASE_DIR}}/blog/{{friend.user.id}}">{{friend}}</a> 
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+                    
+
+         	</div>
+      </div>
+</div>
+
+
+
+{% endblock %}
