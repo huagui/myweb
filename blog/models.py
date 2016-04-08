@@ -7,22 +7,32 @@ from django.db import models
 # Create your models here.
 
 
- 
+
 from django.utils.encoding import python_2_unicode_compatible
 from DjangoUeditor.models import UEditorField
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
- 
+
+
+class Author(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=40)
+    email = models.EmailField(blank=True, verbose_name='e-mail')
+
+    def __unicode__(self):
+        return u'%s %s' % (self.first_name, self.last_name)
+
+
 @python_2_unicode_compatible #支持中文
 class Profile(models.Model):
-	user = models.ForeignKey('auth.User', unique=True)
-	nickname = models.CharField('昵称', max_length=20, help_text="请输入昵称", unique=True)
+	user = models.ForeignKey('auth.User', unique=True,verbose_name='对应的内置User',)
+	nickname = models.CharField(verbose_name='昵称', max_length=20, help_text="请输入昵称", unique=True)
 	photo = models.ImageField('头像', upload_to='photo',default='photo/default.jpg')
 	birthday = models.DateField('出生日期', blank=True, null=True)
 	about = models.CharField('个人简介', blank= True, max_length=20, default='')
 
 	def __str__(self):
-		return self.nickname 
+		return self.nickname
 
 	class Meta:
 		ordering = ['id']
@@ -46,7 +56,7 @@ class Blog(models.Model):
 	update_time = models.DateTimeField('更新时间', auto_now=True, null=True)
 
 	def __str__(self):
-		return self.title 
+		return self.title
 
 	class Meta:
 		ordering = ['-pub_date']
@@ -97,6 +107,19 @@ class Photo(models.Model):
 
 	def __str__(self):
 		return self.image.url
+
+	class Meta:
+		ordering = ['-pub_date']
+
+@python_2_unicode_compatible #支持中文
+class Video(models.Model):
+	uploader = models.ForeignKey('Profile',related_name='uploader_of_video')
+	# image = models.ImageField('相片', upload_to='images', )
+	path =  models.FileField('视频', upload_to='videos',)
+	pub_date = models.DateTimeField('上传时间', auto_now_add=True)
+
+	def __str__(self):
+		return self.path.url
 
 	class Meta:
 		ordering = ['-pub_date']

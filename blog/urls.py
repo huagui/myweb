@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 # from django.contrib.auth.views import login,logout
 
 urlpatterns = [
-    
+
     # url(r'^(?P<pk>\d+)$', 'blog.views.home'),
     url(r'^$', 'blog.views.home'),
     url(r'^list$', 'blog.views.list'),
@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^friend$','blog.views.friend'),
     url(r'^photo$','blog.views.photo'),
     url(r'^upload_photo$','blog.views.upload_photo'),
+    url(r'^video$','blog.views.video'),
+    url(r'upload_video$','blog.views.video'),
     url(r'^pro$','blog.views.pro'),
 ]
-
-

@@ -17,6 +17,14 @@ Register
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-8">
+
+{% if userform.errors %}
+        <p style="color: red;">
+            Please correct the error{{ userform.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+
                <form method="post"  enctype="multipart/form-data" action="/register">
 				{% csrf_token %}
 				<!-- <table>
@@ -32,6 +40,7 @@ Register
 				<strong>头像：</strong> {{proform.photo}}<td><tr>
 				<td> <strong>出生日期：</strong> 
 				<input id="meeting" type="date" name= "birthday" value="1991-01-01"/><br>
+				{{proform.about.errors}}
 				<strong>个人简介：</strong> {{proform.about}}
 				</table>
 

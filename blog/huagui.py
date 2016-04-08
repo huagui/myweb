@@ -7,7 +7,7 @@ def log(text):
     file_object.write("\n\n")
     file_object.close( )
 
-def my_pagination(request, queryset, display_amount=15, after_range_num = 5,bevor_range_num = 4, range_num=5):
+def my_pagination(request, queryset, display_amount=15, after_range_num = 4,bevor_range_num = 1, range_num=5):
     #按参数分页
     paginator = Paginator(queryset, display_amount)
     try:
@@ -28,17 +28,8 @@ def my_pagination(request, queryset, display_amount=15, after_range_num = 5,bevo
         #获得第一页
         objects = paginator.page(1)
     # 根据参数配置导航显示范围
-    # try:
-    #     if page >= after_range_num:
-    #         page_range = paginator.page_range[page-after_range_num:page+bevor_range_num]
-    #     else:
-    #         page_range = paginator.page_range[0+page-1:page+after_range_num]
-    #     return objects,page_range
-    # except:
-    #     return objects,None
-
     if page >= after_range_num:
-        page_range = range(page-after_range_num,page+bevor_range_num)
+        page_range = paginator.page_range[page-after_range_num:page+bevor_range_num]
     else:
-        page_range = range(page,page+bevor_range_num)
+        page_range = paginator.page_range[0+page-1:page+after_range_num]
     return objects,page_range

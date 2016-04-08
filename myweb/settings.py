@@ -39,6 +39,7 @@ AUTH_PROFILE_MODULE = 'blog.Profile'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
+    # 'django.contrib.admin.apps.SimpleAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -89,18 +90,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'b',
         'USER':'root',
-        'PASSWORD':'root',
+        'PASSWORD':'',
         'HOST':'',
         'PORT':'',
     }
-    #  'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': '/home/hg/myweb/a.sqlite3',
-    #     'USER':'',
-    #     'PASSWORD':'',
-    #     'HOST':'',
-    #     'PORT':'',
-    # }
 }
 
 
@@ -108,10 +101,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 # LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'zh_CN'
-# LANGUAGE_CODE = 'zh_hans'
+# LANGUAGE_CODE = 'zh_CN'
+LANGUAGE_CODE = 'zh_hans'
 
-TIME_ZONE = 'Asia/Shanghai'
+TIME_ZONE = 'UTC+8'
 
 USE_I18N = True
 
@@ -132,7 +125,7 @@ STATICFILES_DIRS = (
     ("css", os.path.join(STATIC_ROOT,'css')),
     ("js", os.path.join(STATIC_ROOT,'js')),
     ("bootstrap", os.path.join(STATIC_ROOT,'bootstrap')),
-    ("ueditor", os.path.join(BASE_DIR,'DjangoUeditor'))
+    ("ueditor", os.path.join(BASE_DIR,'/static')),
 )
 
 # STATICFILES_DIRS = (

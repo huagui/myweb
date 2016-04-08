@@ -1,0 +1,64 @@
+{% extends "blog/home.html" %}
+ 
+{% block title %}
+视频
+{% endblock title %}
+
+{% block content %}
+
+<script src="//cdn.bootcss.com/html5media/1.1.8/html5media.min.js"></script>
+
+
+<script type="text/javascript">
+    window.onload=function(){
+        var oVideo = document.getElementsByTagName('video');
+        // alert(oVideo.length);
+        for(var i=0;i<oVideo.length;i++)
+        {
+            // if(oVideo[i].onsuspend){
+            //     alert("if");
+            //     oVdeo[i].style.display="none";
+            // }
+            // else{
+            //     alert("else");
+            // }
+            // alert(oVideo[i].can);
+            // oVideo[i].onloadeddata=function(){
+            //     alert(i);
+            // }
+            // alert(oVideo[i].src);
+        }
+
+    }
+</script>
+
+<div class="container-fluid" style="background:#F4F4F4">
+    <div class="row">
+
+        <div class="col-md-12">
+            <ul >
+                {% for video in video_list %}
+                <li type="none" >
+
+                    <div>
+
+
+                        <!-- <video src="{{video.path.url}}" width="320" height="200" controls preload></video> -->
+                    
+                        <video src="{{video.path.url}}" controls></video>
+                    
+
+                        <!-- 
+                        <video width="320" height="240" controls="controls">
+                        <source src="movie.ogg" type="video/ogg">
+                        <source src="movie.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                    -->
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</div>
+</div>
+{% endblock %}

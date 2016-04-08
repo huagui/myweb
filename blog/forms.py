@@ -8,6 +8,13 @@ class ProfileForm(ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['nickname', 'photo', 'birthday', 'about']
+	def clean_about(self):
+		about = self.cleaned_data['about']
+		if 'huagui' not in about:
+			raise forms.ValidationError('my error')
+		return about
+		
+			
 
 
 class BlogForm(ModelForm):
